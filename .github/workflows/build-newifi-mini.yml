@@ -111,7 +111,12 @@ jobs:
       if: always()
       with:
         name: Padavan-packages
-        path: | 
-          /opt/images
-          /opt/rt-n56u/toolchain.tar.gz
+        path: /opt/images
+        if-no-files-found: error
+    - name : Upload toolchain
+      uses: actions/upload-artifact@master
+      if: always()
+      with:
+        name: toolchain
+        path: /opt/rt-n56u/toolchain.tar.gz
         if-no-files-found: ignore
